@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        #title {
+            text-align: center;
+        }
+
+        #formulaire {
+            margin: auto;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        #phrase {
+            width: 500px;
+            height: 200px;
+            margin-bottom: 15px;
+        }
+
+        #resultat {
+            margin: auto;
+            width: 500px;
+            height: 200px;
+            background-color: lightgray;
+        }
+    </style>
+    <title>Ultimate Inclusif</title>
+</head>
+<body>
+    <h1 id="title">ULTIMATE INCLUSIF</h1><br/>
+    <div id="formulaire">
+        <label for="phrase">Votre phrase :</label><br/>
+        <textarea id="phrase" name="phrase"></textarea><br/>
+        <button id="submit">Convertir.e en.es écrituraelle inclusi.v.e</button><br/>
+    </div>
+    <div id="resultat"></div>
+    <script>
+        var submitButton = document.getElementById("submit");
+
+        submitButton.addEventListener("click", function() {
+            var phrase = document.getElementById("phrase").value,
+                terminaisons = [".e", ".es", ".e.s", ".s", ".t", "ae"],
+                
+                resultat = phrase.split(" ").map(function(mot) {
+                    if (mot == "il" || mot == "elle") {
+                        return "iel";
+                    } else if (mot == "") {
+                        return mot;
+                    } else {
+                        return mot + terminaisons[Math.floor(Math.random() * terminaisons.length)];
+                    }
+                }).join(" "),
+
+                resultatCadre = document.getElementById("resultat");
+
+                resultatCadre.innerText = resultat;
+        })
+
+
+    </script>
+</body>
+</html>
